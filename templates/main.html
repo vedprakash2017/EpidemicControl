@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<title>Page Title</title>
+
+<script type=text/javascript>
+$(function(){
+	$('button').click(function(){
+		var t = $('#node').val();
+		$("#main").hide();
+		$("#wait").show();
+		$.ajax({
+			url: '/simulation',
+			data: {js : t},
+			type: 'get',
+			success: function(response){
+				$("#change").html(response);
+				$("#main").show();
+				$("#wait").hide();
+				// console.log(response);
+			},
+			error: function(error){
+				// console.log(error);
+			}
+		});
+	});
+});
+</script>
+
+
+</head>
+<body>
+<div class="container" id="main">
+
+	<div class="col justify-content-md-center">
+
+		<div class="row">
+			<h2>Simulation for n nodes where n greter then 5 and less then 100 </h2>
+		</div>
+
+		<div class="row">
+			<input type="number" id = "node" placeholder="Number Of Nodes" value="" min="5" max="100"  >
+			<button type="button" name="button" id="send">Submit</button>
+		</div>
+
+
+<div class = "col" id="change">
+
+</div>
+
+
+	</div>
+</div>
+
+<div class="row" id="wait" style="display:none">
+		Please Wait For Simulation Result ...
+</div>
+
+</body>
+</html>

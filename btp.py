@@ -11,22 +11,41 @@ Original file is located at
 import numpy as np
 import random
 import math
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from numpy import linalg as LA
 from google.colab import files
 #import tikzplotlib
 
+import matplotlib
+matplotlib.use('Agg')
+from matplotlib import pyplot as plt
 
 import networkx as nx
 import subprocess
 import os
 import moviepy.editor as mp
+import shutil
 q=1
 G = nx.Graph()
 c1 = []
 c2 = []
 c3 = []
 
+
+
+
+from flask import Flask, jsonify, render_template, request
+app = Flask(__name__)
+
+@app.route("/")
+def main():
+	return render_template('main.html',n = '50')
+
+@app.route("/simulation")
+def sim():
+	a = request.args.get('js')
+	main(int(a))
+	return render_template('main0.html',n=str(a))
 
 def pnum( x ):
 	qu = x/24
@@ -147,9 +166,9 @@ def calcNorm(p,n,st):
 
 	return x
 
-def main():
+def main(a):
 	# define number of nodes
-	n = 50
+	n = a
 	global c2
 	global G
 	# intialise activity, adaptation and acceptance rates of each node
@@ -263,26 +282,39 @@ def main():
 			times.append(t)
 
 		i = "*.png"
-		o = "result.gif"
+		o = str(n)+".gif"
 		subprocess.call("convert -delay 150 -loop 5 " + i + " " + o, shell=True)
-		os.system("start result.gif")
+		os.system("start " + str(n)+".gif")
 		folder_path = os.getcwd()
 
 		# print(folder_path)
 
 		test = os.listdir(folder_path)
+		test1 = os.listdir(folder_path+"/static")
+
+
+
+		for image in test1:
+			if image.endswith(".mp4"):
+				os.remove(os.path.join(folder_path+"/static", image))
+
+		clip = mp.VideoFileClip(str(n)+ ".gif")
+		clip.write_videofile(str(n)+".mp4")
 
 		for images in test:
-		    if images.endswith(".png"):
-		        os.remove(os.path.join(folder_path, images))
-		clip = mp.VideoFileClip("result.gif")
-		clip.write_videofile("result.mp4")
+			if images.endswith(".png"):
+				os.remove(os.path.join(folder_path, images))
+			if images.endswith(".gif"):
+				os.remove(os.path.join(folder_path, images))
 
-
+		shutil.move( folder_path+'/'+str(n)+'.mp4' , folder_path + '/static/' +str(n)+'.mp4')
 		conversionRate += change
 
 
 
 
+# if __name__ == "__main__":
+# 	main()
+
 if __name__ == "__main__":
-	main()
+	app.run()
