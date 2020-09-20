@@ -1,7 +1,7 @@
 <div>
     <div class="row" id="result">
 
-      <video width="320" height="240" controls>
+      <video width="900" height="700" controls>
         <source src={{url_for('static', filename= n + '.mp4')}} type="video/mp4">
         <source src={{url_for('static', filename= n + '.ogg')}} type="video/ogg">
         Your browser does not support the video tag.
@@ -11,7 +11,12 @@
 
 
 
-    <div class="row" id="res">
-      simulation for {{ n }} nodes
+    <div class="row" id="res" style="color:white; text-align:center;font-size:30px;padding:20px">
+      Simulation For {{ n }} Nodes
+    </div>
+
+    <div style="font-size:20px;display: flex;justify-content: center;align-items: center;padding:20px">
+    <span style="width:49%;text-align:center;"> <a style="color:white;text-decoration: none;" href={{url_for('static', filename= n + '.mp4')}}  download>Download Result In Video Format</a></span>
+    <span style="width:49%;text-align:center;"> <a style="color:white;text-decoration: none;" href={{url_for('static', filename= n + '.gif')}}  download>Download Result In Gif Format</a></span>
     </div>
 </div>

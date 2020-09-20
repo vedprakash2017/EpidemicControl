@@ -2,14 +2,340 @@
 <html>
 <head>
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <title>Page Title</title>
+<style>
 
+a:hover
+{
+	color:skyblue;
+}
+
+
+
+
+
+/* @import url('https://fonts.googleapis.com/css?family=Arima+Madurai&display=swap'); */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100vh;
+}
+
+ /* body {
+   background-color: #C1D0D0;
+  font-family: Roboto, Arial, sans-serif;
+   display: flex;
+  align-items: center;
+  justify-content: center;
+}  */
+
+section{
+  /*height: 150px;
+  width: 200px;
+  padding: 5px;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.preloader {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-between;
+  justify-content: space-between;
+  width: 60px;
+  height: 60px;
+}
+
+.preloader div {
+  display:flex;
+  width: 25px;
+  height: 25px;
+  background: #4A676A;
+  border-radius: 3px;
+}
+
+.preloader div:nth-child(1) {
+  animation: squad1 3s steps(1) infinite .2s;
+}
+
+.preloader div:nth-child(2) {
+  animation: squad2 3s steps(1) infinite;
+}
+
+.preloader div:nth-child(3) {
+  animation: squad3 3s steps(1) infinite .4s;
+}
+
+@keyframes squad2 {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(35px);
+  }
+  50% {
+    transform: translate(-35px, 35px);
+  }
+  75% {
+    transform: translateX(-35px);
+  }
+}
+
+@keyframes squad1 {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateX(35px);
+  }
+  50% {
+    transform: translate(35px, 35px);
+  }
+  75% {
+    transform: translateY(35px);
+  }
+}
+
+@keyframes squad3 {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-35px);
+  }
+  50% {
+    transform: translate(35px, -35px);
+  }
+  75% {
+    transform: translateX(35px);
+  }
+}
+
+/*-----------------------*/
+#by {
+  font-family: 'Arima Madurai', cursive;
+  color: #4A676A;
+  font-size: 10px;
+  margin-top: 20px;
+}
+
+/*
+light-blue: #C1D0D0;
+dark-blue: #4A676A;
+cream: #FFEAA5;
+yellow: #FFB037;
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"); */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  color: #333333;
+}
+
+h1,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+h1 + p {
+  color: #999999;
+  margin-bottom: 30px;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+a {
+  color: #0086e4;
+  text-decoration: none;
+}
+
+input[type="checkbox"] {
+  margin: 0;
+  padding: 0;
+  height: 17px;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #960096;
+  background: linear-gradient(225deg, #960096 0%, #6b24cd 50%, #0068ff 100%);
+}
+
+.container {
+  width: 100%;
+  height: auto;
+  max-width: 400px;
+  min-width: 320px;
+  background-color: white;
+}
+
+.flex-space-between {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+}
+
+.flex-align-center {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  gap: 5px;
+}
+
+button {
+  cursor: pointer;
+  background-color: #0086e4;
+  color: white;
+  border: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 6px;
+  letter-spacing: 1px;
+  width: 100%;
+  height: 40px;
+  -webkit-transition: 300ms background-color ease-in-out;
+  transition: 300ms background-color ease-in-out;
+}
+button:hover {
+  background-color: #18a0ff;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+.input-group__label {
+  display: block;
+  position: absolute;
+  top: 0;
+  line-height: 40px;
+  color: #aaa;
+  left: 5px;
+  padding: 0 5px;
+  -webkit-transition: line-height 200ms ease-in-out, font-size 200ms ease-in-out,  top 200ms ease-in-out;
+  transition: line-height 200ms ease-in-out, font-size 200ms ease-in-out,  top 200ms ease-in-out;
+  pointer-events: none;
+}
+.input-group__input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  padding: 0 10px;
+}
+.input-group__input:not(:placeholder-shown) + label, .input-group__input:focus + label {
+  background-color: white;
+  line-height: 10px;
+  opacity: 1;
+  font-size: 10px;
+  top: -5px;
+}
+.input-group__input:focus {
+  outline: none;
+  border: 1px solid #0086e4;
+}
+.input-group__input:focus + label {
+  color: #0086e4;
+}
+
+.tabs {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-flow: row wrap;
+}
+.tabs__text {
+  -webkit-box-flex: 1;
+          flex: 1;
+  margin: 0;
+  cursor: pointer;
+  padding: 20px 30px;
+  font-size: 1.2em;
+  opacity: 0.5;
+  background-color: #eeeeee;
+  border-top: 3px solid #eeeeee;
+  -webkit-transition: border-top 300ms ease-out;
+  transition: border-top 300ms ease-out;
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+}
+.tabs__content {
+  display: none;
+  -webkit-box-flex: 1;
+          flex: 1 1 100%;
+  -webkit-box-ordinal-group: 100;
+          order: 99;
+  padding: 40px 30px 30px 30px;
+}
+.tabs__button {
+  visibility: hidden;
+  height: 0;
+  margin: 0;
+  position: absolute;
+}
+.tabs__button:checked + .tabs__text {
+  color: #0086e4;
+  opacity: 1;
+  background-color: white;
+  border-top: 3px solid #0086e4;
+}
+.tabs__button:checked + .tabs__text + .tabs__content {
+  display: block;
+}
+
+
+</style>
 <script type=text/javascript>
+
+function infn()
+{
+$("#wait").hide();
+}
 $(function(){
 	$('button').click(function(){
 		var t = $('#node').val();
@@ -35,7 +361,8 @@ $(function(){
 
 
 </head>
-<body>
+
+<!-- <body>
 <div class="container" id="main">
 
 	<div class="col justify-content-md-center">
@@ -62,5 +389,63 @@ $(function(){
 		Please Wait For Simulation Result ...
 </div>
 
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+<body onload="infn()">
+
+<div class="wrapper" id="main">
+        <div class="container">
+            <div class="tabs">
+                <!-- Sign In -->
+          	<input type="radio" class="tabs__button" name="signForm" id="signIn" checked />
+
+                <label class="tabs__text" for="signIn">Epidmics Spread Simulation</label>
+
+								<div class="tabs__content">
+                    <h1></h1>
+                    <p>Enter No of Nodes </p>
+
+										<div class="form">
+                        <div class="input-group">
+
+														<!-- <input type="number" id = "node" placeholder="Number Of Nodes" value="" min="5" max="100"  > -->
+                            <input class="input-group__input" type="number" placeholder="&nbsp;" min="5" max="100"  id="node" required />
+                            <label class="input-group__label" for="node" >No Of Nodes</label>
+                        </div>
+                        <!-- Normally I would create a grid system or use an existing to cater this issue -->
+
+                        <!-- <button type="submit">Submit</button> -->
+												<button  id="send">Submit</button>
+                    </div>
+
+
+
+								</div>
+            </div>
+					</div>
+					<div class = "col" id="change">
+        </div>
+</div>
+<!-- <div style="position:absolute;left:40%;top:40%;background-color:" > -->
+<div style="display: flex;justify-content: center;align-items: center;height:100%;background-color:#C1D0D0;" id="wait" style="display:none">
+<div class="preloader"  >
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+</div>
+<!-- <div class="row" id="wait" style="display:none">
+		Please Wait For Simulation Result ...
+</div> -->
 </body>
 </html>

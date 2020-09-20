@@ -281,22 +281,24 @@ def main(a):
 				norm[i][t] = x
 			times.append(t)
 
-		i = "*.png"
-		o = str(n)+".gif"
-		subprocess.call("convert -delay 150 -loop 5 " + i + " " + o, shell=True)
-		os.system("start " + str(n)+".gif")
+
 		folder_path = os.getcwd()
-
-		# print(folder_path)
-
 		test = os.listdir(folder_path)
 		test1 = os.listdir(folder_path+"/static")
 
-
+		for images in test1:
+			if images.endswith(".gif"):
+				os.remove(os.path.join(folder_path+"/static", images))
 
 		for image in test1:
 			if image.endswith(".mp4"):
 				os.remove(os.path.join(folder_path+"/static", image))
+
+
+		i = "*.png"
+		o = str(n)+".gif"
+		subprocess.call("convert -delay 150 -loop 5 " + i + " " + o, shell=True)
+		os.system("start " + str(n)+".gif")
 
 		clip = mp.VideoFileClip(str(n)+ ".gif")
 		clip.write_videofile(str(n)+".mp4")
@@ -304,10 +306,10 @@ def main(a):
 		for images in test:
 			if images.endswith(".png"):
 				os.remove(os.path.join(folder_path, images))
-			if images.endswith(".gif"):
-				os.remove(os.path.join(folder_path, images))
 
 		shutil.move( folder_path+'/'+str(n)+'.mp4' , folder_path + '/static/' +str(n)+'.mp4')
+		shutil.move( folder_path+'/'+str(n)+'.gif' , folder_path + '/static/' +str(n)+'.gif')
+
 		conversionRate += change
 
 
