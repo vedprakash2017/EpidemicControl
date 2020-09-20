@@ -48,7 +48,6 @@ pathlib2==2.3.5
 pexpect==4.8.0
 pickleshare==0.7.5
 Pillow==6.2.2
-pkg-resources==0.0.0
 portpicker==1.2.0
 proglog==0.1.9
 prompt-toolkit==1.0.18
