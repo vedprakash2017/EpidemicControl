@@ -294,6 +294,9 @@ def main(a):
 			if image.endswith(".mp4"):
 				os.remove(os.path.join(folder_path+"/static", image))
 
+		for image in test1:
+			if image.endswith(".jpg"):
+				os.remove(os.path.join(folder_path+"/static", image))
 
 		i = "*.png"
 		o = str(n)+".gif"
@@ -310,6 +313,25 @@ def main(a):
 		shutil.move( folder_path+'/'+str(n)+'.mp4' , folder_path + '/static/' +str(n)+'.mp4')
 		shutil.move( folder_path+'/'+str(n)+'.gif' , folder_path + '/static/' +str(n)+'.gif')
 
+		fig = plt.figure()
+		ax = fig.add_subplot(1, 1, 1)
+
+
+		# for i in range(0,2):
+		#     print (norm[i])
+		# print(conversionRate)
+
+		ax.plot(times,1 - norm[0] - norm[1] - norm[2], label = "S")
+		ax.plot(times,norm[0], label = "X")
+		ax.plot(times,norm[1], label = "Y")
+		ax.plot(times,norm[2], label = "R")
+		plt.legend(loc = "upper right")
+		plt.title("x_initial = 20", fontsize=15)
+		plt.xlabel('Time', fontsize=15)
+		plt.ylabel('Fraction Infected', fontsize=15)
+		plt.style.use("default")
+		plt.savefig(str(n)+".jpg")
+		shutil.move( folder_path+'/'+str(n)+'.jpg' , folder_path + '/static/' +str(n)+'.jpg')
 		conversionRate += change
 
 
